@@ -28,23 +28,23 @@ int main(int argc, char** argv) {
         system("clear");
         
         if (choice == "0"){
-            cout << "function AddStudent() called" << endl;
+            cout << "function AddStudent() called\n" << endl;
             studentDatabase.AddStudent();
         }
         else if (choice == "1"){
-           cout << "function ReadDatabase() called" << endl;
+           cout << "function ReadDatabase() called\n" << endl;
            studentDatabase.ReadDatabase();
         }
         else if (choice == "2"){
-           cout << "function SaveDatabase() called" << endl;
+           cout << "function SaveDatabase() called\n" << endl;
            studentDatabase.SaveDatabase();
         }
         else if (choice == "3"){
-           cout << "function QueryStudent() called" << endl;
+           cout << "function QueryStudent() called\n" << endl;
            studentDatabase.QueryStudent();
         }
         else if (choice == "4"){
-           cout << "function GradeStudent() called" << endl;
+           cout << "function GradeStudent() called\n" << endl;
            studentDatabase.GradeStudent();
         }
         else if (choice == "q" or choice == "Q"){
@@ -52,7 +52,8 @@ int main(int argc, char** argv) {
         }
         else{
             cout << "Not a valid option" << endl;
-        }  
+        } 
+        cout << "" << endl;
     }
     
     return 0;

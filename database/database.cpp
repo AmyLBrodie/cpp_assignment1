@@ -8,7 +8,7 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
-#include <locale>
+#include <algorithm>
 
 
 namespace BRDAMY004{
@@ -54,9 +54,9 @@ namespace BRDAMY004{
 
     std::string StudentDatabase::GetStudentNo(){
         std::string studentNo;
-        std::locale loc;
-        std::cout << "Enter the student number (in uppercase)" << std::endl;
+        std::cout << "Enter the student number:" << std::endl;
         std::cin >> studentNo;
+        std::transform(studentNo.begin(), studentNo.end(), studentNo.begin(), toupper);
         return studentNo;
     }
     
@@ -73,7 +73,7 @@ namespace BRDAMY004{
         std::cin >> newStudent.Name;
         std::cout << "Enter the student's surname:" << std::endl;
         std::cin >> newStudent.Surname;
-        std::cout << "Enter the student number (in uppercase):" << std::endl;
+        std::cout << "Enter the student number:" << std::endl;
         std::cin >> newStudent.StudentNo;
         std::cout << "Enter the student's first mark:"<< std::endl;
         std::cin >> grade1;
@@ -85,6 +85,7 @@ namespace BRDAMY004{
         std::cin >> grade4;
         newStudent.ClassRecord = grade1 + " " + grade2 + " " + grade3 + " " + grade4;
         bool found = false;
+        std::transform(newStudent.StudentNo.begin(), newStudent.StudentNo.end(), newStudent.StudentNo.begin(), toupper);
         for (int i=0; i<students.size(); i++){
             if (students.at(i).StudentNo == newStudent.StudentNo){
                 found = true;
@@ -149,7 +150,7 @@ namespace BRDAMY004{
             classRecord >> grade2;
             classRecord >> grade3;
             classRecord >> grade4;
-            average = (grade1 + grade2 + grade3 + grade4)/4;
+            average = (grade1 + grade2 + grade3 + grade4)/4.0;
             std::cout << "The average of " << studentNo << " is: " << average << std::endl;
         }
         else{
