@@ -5,7 +5,7 @@
  */
 
 #include <iostream>
-
+#include <cstdlib>
 
 
 
@@ -42,8 +42,7 @@ int main(int argc, char** argv) {
         }
         else{
             cout << "Not a valid option" << endl;
-        }
-           
+        }  
     }
     
     return 0;
