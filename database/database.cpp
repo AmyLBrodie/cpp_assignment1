@@ -18,6 +18,8 @@ namespace BRDAMY004{
         
     }
     
+    // Reads data out of textfile and places it inside the vector called students
+    // Only called when program is started
     void StudentDatabase::StartDatabase(){
         std::string file = "Student_Database.txt";
         std::ifstream fileInput (file.c_str());
@@ -29,10 +31,6 @@ namespace BRDAMY004{
             std::string line;
             std::string temp;
             StudentRecord tempRecord;
-            /*tempRecord.Name = "";
-            tempRecord.Surname = "";
-            tempRecord.StudentNo = "";
-            tempRecord.ClassRecord = "";*/
             std::getline(fileInput, line, '\n');
             std::istringstream splitRecords(line);
             splitRecords >> tempRecord.Name >> tempRecord.Surname >> tempRecord.StudentNo >> tempRecord.ClassRecord;
@@ -44,6 +42,7 @@ namespace BRDAMY004{
             temp = "";
             splitRecords >> temp;
             tempRecord.ClassRecord += " " + temp;
+            // makes sure that the record is not blank
             if (tempRecord.Name != ""){
                 students.push_back(tempRecord);
             }
@@ -52,6 +51,7 @@ namespace BRDAMY004{
         fileInput.close();
     }
 
+    // Takes an inputted student number, converts it to upper case and returns it
     std::string StudentDatabase::GetStudentNo(){
         std::string studentNo;
         std::cout << "Enter the student number:" << std::endl;
@@ -60,12 +60,17 @@ namespace BRDAMY004{
         return studentNo;
     }
     
+    // Takes a StudentRecord and makes a string out of it, then returns this string
     std::string StudentDatabase::PrintRecord(StudentRecord record){
         std::string temp;
         temp = record.Name + " " + record.Surname + " " + record.StudentNo + " " + record.ClassRecord;
         return temp;
     }
 
+    // Takes in data about a new student record
+    // Checks if the student number exists in the database already
+    // If it exists then the existing data is overwritten
+    // If it doesn't exist then a new record is added to the database
     void StudentDatabase::AddStudent(){
         std::string grade1, grade2, grade3, grade4;
         StudentRecord newStudent;
@@ -99,12 +104,15 @@ namespace BRDAMY004{
         }
     }
 
+    // Prints out the student records that are in the vector called students
+    // It will print out all records in the vector (including unsaved records)
     void StudentDatabase::ReadDatabase(){
         for (int i=0; i<students.size(); i++){
             std::cout << PrintRecord(students.at(i)) << std::endl;
         }
     }
 
+    // Takes all the student records in the vector and places them in the database textfile
     void StudentDatabase::SaveDatabase(){
         std::string file = "Student_Database.txt";
         std::ofstream fileWrite(file.c_str());
@@ -114,6 +122,9 @@ namespace BRDAMY004{
         fileWrite.close();
     }
 
+    // Takes in a student number and searches the database for that student number
+    // If found the students record will be displayed
+    // If not found a message will be displayed to that effect
     void StudentDatabase::QueryStudent(){
         bool found = false;
         std::string studentNo = GetStudentNo();
@@ -132,6 +143,9 @@ namespace BRDAMY004{
         }
     }
 
+    // Takes in a student number and searches the database for that student
+    // If found the student's average grade will be calculated and displayed
+    // If not found a message will be displayed to that effect
     void StudentDatabase::GradeStudent(){
         bool found = false;
         std::string studentNo = GetStudentNo();

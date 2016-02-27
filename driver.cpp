@@ -25,7 +25,7 @@ int main(int argc, char** argv) {
         cout << "Enter a number (or q to quit) and press return..." << endl;
         cin >> choice;
         
-        system("clear");
+        system("clear"); // clears the terminal window
         
         if (choice == "0"){
             cout << "function AddStudent() called\n" << endl;
