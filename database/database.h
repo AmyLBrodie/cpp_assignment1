@@ -23,13 +23,14 @@ namespace BRDAMY004{
     private:
         std::vector<StudentRecord> students;
     public:
-        StudentDatabase();
-        GetStudentNo();
+        StartDatabase();
+        std::string GetStudentNo();
         AddStudent();
         ReadDatabase();
         SaveDatabase();
         QueryStudent();
-        GradeStudent();
+        double GradeStudent();
+        PrintRecord(StudentRecord record);
     };
     
 }
