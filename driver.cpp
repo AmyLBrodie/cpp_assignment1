@@ -6,12 +6,15 @@
 
 #include <iostream>
 #include <cstdlib>
+#include "database/database.h"
 
 
 
 int main(int argc, char** argv) {
     using namespace std;
     string choice;
+    BRDAMY004::StudentDatabase studentDatabase;
+    studentDatabase.StartDatabase();
     for (;;){
         cout << "0: Add Student" << endl;
         cout << "1: Read Database" << endl;
@@ -22,20 +25,27 @@ int main(int argc, char** argv) {
         cout << "Enter a number (or q to quit) and press return..." << endl;
         cin >> choice;
         
+        system("clear");
+        
         if (choice == "0"){
             cout << "function AddStudent() called" << endl;
+            studentDatabase.AddStudent();
         }
         else if (choice == "1"){
            cout << "function ReadDatabase() called" << endl;
+           studentDatabase.ReadDatabase();
         }
         else if (choice == "2"){
            cout << "function SaveDatabase() called" << endl;
+           studentDatabase.SaveDatabase();
         }
         else if (choice == "3"){
            cout << "function QueryStudent() called" << endl;
+           studentDatabase.QueryStudent();
         }
         else if (choice == "4"){
            cout << "function GradeStudent() called" << endl;
+           studentDatabase.GradeStudent();
         }
         else if (choice == "q" or choice == "Q"){
             break;
